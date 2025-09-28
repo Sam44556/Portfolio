@@ -14,10 +14,10 @@ function Provider({ children }) {
   );
 }
 
-function useprovider() {
+function useProvider() {
   const context = useContext(Context);
   
   return context;
 }
 
-export { Provider, useprovider };
+export { Provider, useProvider };

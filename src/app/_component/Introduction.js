@@ -11,7 +11,7 @@ export default function Introduction() {
     {/* Left: Text content */}
     <div>
       <h1 className="text-4xl font-semibold leading-snug mb-4">
-        <span className="block text-white">I'm Samuel Girma,</span>
+        <span className="block text-white">I&apos;m Samuel Girma,</span>
         <span className="text-purple-500 font-bold">a web developer</span>
       </h1>
       <p className="text-gray-300 mb-6">
