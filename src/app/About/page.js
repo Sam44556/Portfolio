@@ -7,7 +7,7 @@ export default function Page() {
   const techs = ["React", "TypeScript", "Node.js", "Next.js", "Django", "MongoDB", "Supabase"];
 
   return (
-    <div className="bg-black text-white min-h-screen px-6 py-12 flex flex-col">
+    <div className="bg-black text-white min-h-screen mb-10 px-6 py-12 flex flex-col">
       {/* Page Title */}
       <h1 className="text-4xl md:text-4xl font-bold ml-12 mb-12 text-purple-500">
         About Me
@@ -17,7 +17,7 @@ export default function Page() {
         {/* Left Side - Paragraphs */}
         <div className="space-y-4 flex flex-col justify-center">
           <p className="text-gray-300 text-justify leading-relaxed">
-            Hello! I'm <span className="text-purple-400 font-semibold">Samuel Girma</span>, a
+            Hello! I&apos;m <span className="text-purple-400 font-semibold">Samuel Girma</span>, a
              5th-year Software Engineering student at Addis Ababa
             Science and Technology University (AASTU). I am passionate about
             designing and building innovative software solutions that combine

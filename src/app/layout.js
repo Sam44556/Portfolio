@@ -2,7 +2,7 @@
 import Header from "@/app/_component/Header";
 import Footer from "./_component/Footer";
 
-import { Provider } from "@/app/_component/Context";
+
 import "./globals.css";
 export const metadata = {
   title: 'Samuel Girma Portfolio',
@@ -31,10 +31,10 @@ export default function RootLayout({ children }) {
 
         <div className="">
           <main className="w-full flex-grow">
-           <Provider>
+         
 
             {children}
-              </Provider></main>
+              </main>
         </div>
         <Footer />
         </body>
