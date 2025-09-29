@@ -30,7 +30,7 @@ export default function RootLayout({ children }) {
         <Header />
 
         <div className="">
-          <main className="w-full flex-grow">
+          <main className="w-full flex-grow pt-14 sm:pt-0">
          
 
             {children}

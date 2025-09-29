@@ -6,18 +6,18 @@ export default function Introduction() {
   return (
     <>
    <div className="bg-black  text-white min-h-screen flex items-center justify-center px-6">
-  <div className="max-w-6xl w-full pl-10  grid grid-cols-1 md:grid-cols-2 items-center gap-20">
+  <div className="max-w-6xl w-full  grid grid-cols-1 md:grid-cols-2  md:pl-10 items-center gap-20">
     
     {/* Left: Text content */}
     <div>
-      <h1 className="text-4xl font-semibold leading-snug mb-4">
+      <h1 className="text-4xl font-semibold leading-snug mb-4 text-center md:text-left">
         <span className="block text-white">I&apos;m Samuel Girma,</span>
         <span className="text-purple-500 font-bold">a web developer</span>
       </h1>
-      <p className="text-gray-300 mb-6">
+      <p className="text-gray-300 mb-6 ">
        I develop modern websites using the latest technologies <span className="text-purple-500 font-bold">as a full-stack developer</span>— constantly evolving with the tech landscape.
       </p>
-      <div className="flex space-x-4">
+      <div className="flex flex-col sm:flex-row justify-center md:justify-start gap-4">
        
 
   <button className="bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 px-5 rounded-full shadow-md transition duration-300">
