@@ -1,36 +1,69 @@
-"use client"; // if using Next.js app router
+"use client";
+import { useEffect, useState } from "react";
 import emailjs from "@emailjs/browser";
-import { useEffect } from "react";
+
 export default function Page() {
   useEffect(() => {
-    emailjs.init(  process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY); // your public key
+    emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY);
   }, []);
-   function sendEmail(e) {
+
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+  const [sending, setSending] = useState(false);
+
+  // sanitize input
+  function sanitize(str = "") {
+    return String(str)
+      .trim()
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#39;")
+      .slice(0, 2000);
+  }
+
+  function isValidEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  }
+
+  async function sendEmail(e) {
     e.preventDefault();
+    setError("");
+    setSuccess("");
 
-    const templateParams = {
-      name: e.target.name.value,
-      email: e.target.email.value,
-      message: e.target.message.value,
-    };
+    const form = e.target;
+    const name = sanitize(form.name.value);
+    const email = form.email.value.trim();
+    const message = sanitize(form.message.value);
 
-    emailjs
-      .send( process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
-  process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,templateParams)
-      .then(() => {
-        alert("Message sent successfully!");
-        e.target.reset();
-      })
-      .catch((error) => {
-        console.error("FAILED...", error);
-        alert("Something went wrong. Try again!");
-      });
+    if (!name) return setError("Please enter your name.");
+    if (!isValidEmail(email)) return setError("Please enter a valid email.");
+    if (!message) return setError("Please enter a message.");
+
+    const templateParams = { name, email: sanitize(email), message };
+
+    try {
+      setSending(true);
+      await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
+        templateParams
+      );
+      setSuccess("Message sent successfully!");
+      form.reset();
+    } catch (err) {
+      console.error("FAILED...", err);
+      setError("Something went wrong. Try again!");
+    } finally {
+      setSending(false);
+    }
   }
 
   return (
-    <div className="flex flex-col bg-black items-center justify-center px-4  text-center">
+    <div className="flex flex-col bg-black items-center justify-center px-4 text-center">
       {/* Header */}
-      <h1 className="text-3xl sm:text-4xl md:text-4xl lg:text-4xl  text-white mb-4">
+      <h1 className="text-3xl sm:text-4xl md:text-4xl lg:text-4xl text-white mb-4">
         Let&apos;s Build Something Amazing
       </h1>
       <p className="text-gray-400 max-w-md sm:max-w-xl md:max-w-2xl lg:max-w-3xl mb-6 text-base sm:text-lg md:text-xl">
@@ -39,54 +72,52 @@ export default function Page() {
 
       {/* Location */}
       <div className="flex items-center gap-2 text-gray-400 mb-10">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-5 w-5 md:h-6 md:w-6"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M12 11c0-1.657-1.343-3-3-3s-3 1.343-3 3 3 6 3 6 3-4.343 3-6z"
-          />
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 md:h-6 md:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 11c0-1.657-1.343-3-3-3s-3 1.343-3 3 3 6 3 6 3-4.343 3-6z" />
         </svg>
         <span className="text-sm md:text-base">Addis Ababa, ETHIOPIA</span>
       </div>
 
       {/* Form */}
-      <form className="w-full max-w-md sm:max-w-lg md:max-w-4xl space-y-4 " onSubmit={sendEmail}>
+      <form className="w-full max-w-md sm:max-w-lg md:max-w-4xl space-y-4" onSubmit={sendEmail} noValidate>
         <input
           type="text"
           name="name"
           placeholder="Name"
+          required
+          maxLength={200}
           className="w-full px-4 py-3 rounded-md bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
         />
         <input
           type="email"
           name="email"
           placeholder="Email"
+          required
+          maxLength={254}
           className="w-full px-4 py-3 rounded-md bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
         />
         <textarea
           placeholder="Message"
           name="message"
           rows="4"
+          required
+          maxLength={2000}
           className="w-full px-4 py-3 rounded-md bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
         />
+
+        {error && <p className="text-red-400 text-sm">{error}</p>}
+        {success && <p className="text-green-400 text-sm">{success}</p>}
+
         <button
           type="submit"
-          className="w-full py-3 rounded-md bg-gradient-to-r bg-purple-600 hover:bg-purple-700 text-white font-semibold hover:opacity-90 transition"
+          disabled={sending}
+          className="w-full py-3 rounded-md bg-gradient-to-r bg-purple-600 hover:bg-purple-700 text-white font-semibold hover:opacity-90 transition disabled:opacity-50"
         >
-          Send Message
+          {sending ? "Sending..." : "Send Message"}
         </button>
       </form>
 
-   
-      {/* Social Links */}
-      <div className="flex gap-8 mt-8 text-gray-400">
+       <div className="flex gap-8 mt-8 text-gray-400">
        <a 
   href="https://github.com/Sam44556" 
   target="_blank" 
