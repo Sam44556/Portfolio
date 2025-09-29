@@ -14,7 +14,7 @@ export default function Introduction() {
         <span className="block text-white">I&apos;m Samuel Girma,</span>
         <span className="text-purple-500 font-bold">a web developer</span>
       </h1>
-      <p className="text-gray-300 mb-6 ">
+      <p className="text-gray-300 mb-6 text-center  md:text-left">
        I develop modern websites using the latest technologies <span className="text-purple-500 font-bold">as a full-stack developer</span>— constantly evolving with the tech landscape.
       </p>
        <div className="flex flex-row justify-center md:justify-start gap-4">
@@ -32,7 +32,7 @@ export default function Introduction() {
     </div>
 
     {/* Right: Circular image */}
-   <div className="flex justify-center items-center mr-8">
+   <div className="flex justify-center items-center ">
   <div className=" w-64 h-64 rounded-full bg-gradient-to-tr from-purple-600 to-purple-400 p-1">
     <div className="relative rounded-full overflow-hidden w-full h-full bg-white">
        <Image
