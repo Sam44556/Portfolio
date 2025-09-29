@@ -17,7 +17,7 @@ export default function Introduction() {
       <p className="text-gray-300 mb-6 ">
        I develop modern websites using the latest technologies <span className="text-purple-500 font-bold">as a full-stack developer</span>— constantly evolving with the tech landscape.
       </p>
-      <div className="flex flex-col sm:flex-row justify-center md:justify-start gap-4">
+       <div className="flex flex-row justify-center md:justify-start gap-4">
        
 
   <button className="bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 px-5 rounded-full shadow-md transition duration-300">
