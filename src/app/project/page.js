@@ -1,7 +1,7 @@
 import bunatetu from "../../../public/bunatetu.jpg";
 import reactEcom from "../../../public/ecommerce.jpg";
 import studentcms from "../../../public/download.jpg";
-import career_ai from "../../../public/career_ai";
+import career_ai from "../../../public/career_ai.jpg";
 import Image from "next/image";
 export default function Page() {
   const projects = [
