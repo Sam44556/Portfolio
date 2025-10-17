@@ -1,13 +1,31 @@
 import bunatetu from "../../../public/bunatetu.jpg";
 import reactEcom from "../../../public/ecommerce.jpg";
 import studentcms from "../../../public/download.jpg";
+import career_ai from "../../../public/career_ai";
 import Image from "next/image";
 export default function Page() {
   const projects = [
     {
+      title: "CareerAI",
+      description: "An AI-driven web application that recommends personalized career paths based on users’ skills, interests, and goals, helping them explore suitable professions and plan their growth effectively.",
+      image:career_ai, // Replace with your image path
+      performance: { performance: 100, accessibility: 100, seo: 90 },
+      tech: [
+        "**Frontend:** Next.js",
+        "**Backend:** Next.js API Routes",
+        "**Database:** Supabase (PostgreSQL)",
+        "**ORM:** Prisma ORM",
+        "**Authentication:** Next",
+        "**AI-integration:** gemini-2.5",
+
+      ],
+      github: "https://github.com/Sam44556/AI-Powered-Career-Path-web", 
+      live: "https://ai-powered-career-path-web.vercel.app/",
+    },
+    {
       title: "E-commerce ",
       description: "A high-performance Progressive Web App with offline capabilities.",
-      image:reactEcom, // Replace with your image path
+      image:reactEcom, 
       performance: { performance: 98, accessibility: 100, seo: 50 },
       tech: [
         "**Frontend:** React, Progressive Web App features",
