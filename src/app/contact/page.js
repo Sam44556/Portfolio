@@ -1,6 +1,9 @@
 "use client";
+
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
+import { MdEmail, MdLocationOn } from "react-icons/md";
 
 export default function Page() {
   useEffect(() => {
@@ -11,7 +14,6 @@ export default function Page() {
   const [success, setSuccess] = useState("");
   const [sending, setSending] = useState(false);
 
-  // sanitize input
   function sanitize(str = "") {
     return String(str)
       .trim()
@@ -60,142 +62,147 @@ export default function Page() {
     }
   }
 
-  return (
-    <div className="flex flex-col bg-black items-center justify-center px-4 text-center">
-      {/* Header */}
-      <h1 className="text-3xl sm:text-4xl md:text-4xl lg:text-4xl text-white mb-4">
-        Let&apos;s Build Something Amazing
-      </h1>
-      <p className="text-gray-400 max-w-md sm:max-w-xl md:max-w-2xl lg:max-w-3xl mb-6 text-base sm:text-lg md:text-xl">
-        Looking for a developer who can create high-performance, interactive web experiences?
-      </p>
-
-      {/* Location */}
-      <div className="flex items-center gap-2 text-gray-400 mb-10">
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 md:h-6 md:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 11c0-1.657-1.343-3-3-3s-3 1.343-3 3 3 6 3 6 3-4.343 3-6z" />
+  const contactInfo = [
+    {
+      name: "Email",
+      icon: <MdEmail className="w-7 h-7" />,
+      href: "mailto:samuelgirma888@gmail.com",
+      label: "samuelgirma888@gmail.com",
+    },
+    {
+      name: "Phone",
+      icon: (
+        <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
         </svg>
-        <span className="text-sm md:text-base">Addis Ababa, ETHIOPIA</span>
-      </div>
+      ),
+      href: "tel:+251938671057",
+      label: "+251 938 671 057",
+    },
+    {
+      name: "Location",
+      icon: <MdLocationOn className="w-7 h-7" />,
+      href: "https://maps.google.com/?q=Addis+Ababa+Ethiopia",
+      label: "Addis Ababa, Ethiopia",
+    },
+  ];
 
-      {/* Form */}
-      <form className="w-full max-w-md sm:max-w-lg md:max-w-4xl space-y-4" onSubmit={sendEmail} noValidate>
-        <input
-          type="text"
-          name="name"
-          placeholder="Name"
-          required
-          maxLength={200}
-          className="w-full px-4 py-3 rounded-md bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
-        />
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          required
-          maxLength={254}
-          className="w-full px-4 py-3 rounded-md bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
-        />
-        <textarea
-          placeholder="Message"
-          name="message"
-          rows="4"
-          required
-          maxLength={2000}
-          className="w-full px-4 py-3 rounded-md bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
-        />
+  return (
+    <div className="bg-background text-foreground pt-12 md:pt-16 pb-8 md:pb-12 px-4 md:px-8" id="contact">
+      <div className="max-w-6xl mx-auto">
 
-        {error && <p className="text-red-400 text-sm">{error}</p>}
-        {success && <p className="text-green-400 text-sm">{success}</p>}
-
-        <button
-          type="submit"
-          disabled={sending}
-          className="w-full py-3 rounded-md bg-gradient-to-r bg-purple-600 hover:bg-purple-700 text-white font-semibold hover:opacity-90 transition disabled:opacity-50"
+        {/* HEADER */}
+        <motion.div
+          initial={{ opacity: 0, y: -30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
         >
-          {sending ? "Sending..." : "Send Message"}
-        </button>
-      </form>
+          <h2 className="text-4xl md:text-5xl font-bold text-accent mb-4">
+            Get In Touch
+          </h2>
+          <p className="text-foreground opacity-70 text-lg max-w-2xl mx-auto">
+            Have a project in mind or want to collaborate? I'd love to hear from you!
+          </p>
+        </motion.div>
 
-       <div className="flex gap-8 mt-8 text-gray-400">
-       <a 
-  href="https://github.com/Sam44556" 
-  target="_blank" 
-  rel="noopener noreferrer"
-  className="text-gray-400 hover:text-white transition-colors"
->
-  <svg 
-    xmlns="http://www.w3.org/2000/svg" 
-    fill="currentColor" 
-    viewBox="0 0 24 24" 
-    className="w-6 h-6"
-  >
-    <path d="M12 .5C5.65.5.5 5.65.5 
-             12c0 5.09 3.29 9.4 7.86 10.94.58.11.79-.25.79-.56 
-             0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.53-1.34-1.3-1.7-1.3-1.7-1.06-.72.08-.71.08-.71 
-             1.17.08 1.79 1.2 1.79 1.2 1.04 1.78 2.73 1.27 
-             3.4.97.11-.76.41-1.27.74-1.56-2.55-.29-5.23-1.28-5.23-5.7 
-             0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.45.11-3.02 
-             0 0 .97-.31 3.18 1.18a11.1 11.1 0 012.9-.39c.99 0 
-             1.99.13 2.9.39 2.2-1.49 3.18-1.18 
-             3.18-1.18.63 1.57.23 2.73.11 3.02.74.81 
-             1.19 1.84 1.19 3.1 0 4.43-2.69 
-             5.41-5.25 5.69.42.36.79 1.09.79 2.2 
-             0 1.59-.01 2.87-.01 3.26 
-             0 .31.21.67.8.56A10.52 10.52 0 0023.5 
-             12c0-6.35-5.15-11.5-11.5-11.5z"/>
-  </svg>
-</a>
+        {/* MAIN GRID */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
-        <a 
-  href="https://www.linkedin.com/in/samuel-girma-28046a299" 
-  target="_blank" 
-  rel="noopener noreferrer"
-  className="text-gray-400 hover:text-white transition-colors"
->
-  <svg 
-    xmlns="http://www.w3.org/2000/svg" 
-    fill="currentColor" 
-    viewBox="0 0 24 24" 
-    className="w-6 h-6"
-  >
-    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 
-             2.761 2.239 5 5 5h14c2.762 0 
-             5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 
-             19h-3v-10h3v10zm-1.5-11.268c-.966 
-             0-1.75-.783-1.75-1.75s.784-1.75 
-             1.75-1.75 1.75.783 
-             1.75 1.75-.784 1.75-1.75 
-             1.75zm13.5 11.268h-3v-5.604c0-1.337-.027-3.062-1.867-3.062-1.869 
-             0-2.156 1.46-2.156 
-             2.967v5.699h-3v-10h2.881v1.367h.041c.401-.761 
-             1.379-1.562 2.839-1.562 3.037 
-             0 3.6 2.001 3.6 
-             4.604v5.591z"/>
-  </svg>
-</a>
+          {/* LEFT SIDE - PERFECTLY CENTERED */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="flex justify-center items-start lg:items-center"
+          >
+            <div className="space-y-6 w-full max-w-sm lg:-mt-16 -mt-8">
 
-        <a 
-  href="https://t.me/Sami_girma_8" 
-  target="_blank" 
-  rel="noopener noreferrer"
-  className="text-gray-400 hover:text-white transition-colors"
->
-  <svg 
-    xmlns="http://www.w3.org/2000/svg" 
-    fill="currentColor" 
-    viewBox="0 0 24 24" 
-    className="w-6 h-6"
-  >
-    <path d="M9.999 15.2l-.39 5.5c.56 0 .8-.24 
-             1.09-.53l2.62-2.5 5.43 3.94c1 .55 
-             1.71.26 1.96-.93l3.55-16.65h.01c.32-1.49-.54-2.08-1.52-1.72l-21.2 
-             8.17c-1.45.56-1.43 1.36-.25 
-             1.72l5.43 1.69L18.49 6.5c.61-.41 
-             1.17-.18.71.23"/>
-  </svg>
-</a>
+              {contactInfo.map((info, idx) => (
+                <motion.a
+                  key={info.name}
+                  href={info.href}
+                  target={info.name === "Location" ? "_blank" : undefined}
+                  rel={info.name === "Location" ? "noopener noreferrer" : undefined}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: idx * 0.1 }}
+                  whileHover={{ scale: 1.03 }}
+                  className="flex items-center h-20 gap-4 p-4 rounded-lg border border-border hover:border-accent transition-all"
+                >
+                  <div className="text-accent">{info.icon}</div>
+                  <div>
+                    <p className="font-semibold">{info.name}</p>
+                    <p className="text-sm opacity-70">{info.label}</p>
+                  </div>
+                </motion.a>
+              ))}
 
+            </div>
+          </motion.div>
+
+          {/* RIGHT SIDE FORM */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <form onSubmit={sendEmail} noValidate className="space-y-6">
+
+              <div>
+              
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Your Name"
+                  required
+                  className="w-full h-10 px-4 py-3 rounded-lg bg-muted border border-border focus:ring-2 focus:ring-accent outline-none"
+                />
+              </div>
+
+              <div>
+                
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Your Email"
+                  required
+                  className="w-full h-10 px-4 py-3 rounded-lg bg-muted border border-border focus:ring-2 focus:ring-accent outline-none"
+                />
+              </div>
+
+              <div>
+               
+                <textarea
+                  name="message"
+                  rows="6"
+                  required
+                  placeholder="Your Message"
+                  className="w-full  min-h-[80px] px-4 py-3 rounded-lg bg-muted border border-border focus:ring-2 focus:ring-accent outline-none"
+                    />
+              </div>
+
+              {error && <p className="text-red-400 text-sm">{error}</p>}
+              {success && <p className="text-green-400 text-sm">{success}</p>}
+
+              <motion.button
+                type="submit"
+                disabled={sending}
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.95 }}
+                className="w-full bg-accent py-3 rounded-lg text-white font-semibold disabled:opacity-50"
+              >
+                {sending ? "Sending..." : "Send Message"}
+              </motion.button>
+
+            </form>
+          </motion.div>
+
+        </div>
       </div>
     </div>
   );

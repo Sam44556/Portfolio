@@ -13,7 +13,7 @@ export default function Logo() {
         alt="portifolio logo"
         className="rounded-full object-cover"
       />
-      <span className="text-xl font-semibold text-primary-100">
+      <span className="text-xl font-semibold text-foreground">
        Samuel Girma
       </span>
     </Link>

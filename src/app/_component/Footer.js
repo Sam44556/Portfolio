@@ -1,7 +1,7 @@
- export default function Footer() {
+export default function Footer() {
   return (
-    <footer className="bg-black pt-20 text-white p-4">
-      <div className="container mx-auto text-center text-gray-400">
+    <footer className="bg-background text-foreground pt-20 p-4 border-t border-border">
+      <div className="container mx-auto text-center opacity-70">
         <span>&copy; {new Date().getFullYear()} Samuel Girma Asfaw</span>
         <span>, All right reserved!</span>
       </div>

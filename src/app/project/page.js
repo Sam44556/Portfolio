@@ -1,171 +1,172 @@
-import bunatetu from "../../../public/bunatetu.jpg";
-import reactEcom from "../../../public/ecommerce.jpg";
-import studentcms from "../../../public/download.jpg";
-import career_ai from "../../../public/career.jpg";
+'use client';
+
+import { motion } from 'framer-motion';
 import Image from "next/image";
+import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
+
 export default function Page() {
   const projects = [
     {
       title: "CareerAI",
-      description: "An AI-driven web application that recommends personalized career paths based on users’ skills, interests, and goals, helping them explore suitable professions and plan their growth effectively.",
-      image:career_ai, // Replace with your image path
-      performance: { performance: 100, accessibility: 100, seo: 90 },
-      tech: [
-        "**Frontend:** Next.js",
-        "**Backend:** Next.js API Routes",
-        "**Database:** Supabase (PostgreSQL)",
-        "**ORM:** Prisma ORM",
-        "**Authentication:** Next",
-        "**AI-integration:** gemini-2.5",
-
-      ],
-      github: "https://github.com/Sam44556/AI-Powered-Career-Path-web", 
+      description: "An AI-driven web application that recommends personalized career paths based on users' skills, interests, and goals.",
+      image: "/career.jpg",
+      tech: ["Next.js", "Supabase", "Prisma", "Gemini AI"],
+      github: "https://github.com/Sam44556/AI-Powered-Career-Path-web",
       live: "https://ai-powered-career-path-web.vercel.app/",
     },
+     {
+      title: "FreelanceHub",
+      description: "A freelance marketplace where clients can hire skilled professionals and freelancers can find real projects. Users can post jobs, offer services, and connect easily to work together online.",
+      image: "/fre.jpg",
+      tech: ["React", "Node.js", "Express.js", "Mongodb"],
+      github: "https://github.com/Sam44556/freelance_web",
+      live: "https://freelance-web-2.onrender.com/",
+    },
     {
-      title: "E-commerce ",
-      description: "A high-performance Progressive Web App with offline capabilities.",
-      image:reactEcom, 
-      performance: { performance: 98, accessibility: 100, seo: 50 },
-      tech: [
-        "**Frontend:** React, Progressive Web App features",
-        "**Backend:** Node.js, RESTful APIs",
-        "**Database:** MongoDB",
-        "**Authentication:** Google Authentication",
-      ],
-      github: "https://github.com/Sam44556/ecommerce", // 👈 Add GitHub link
+      title: "E-commerce App",
+      description: "A high-performance Progressive Web App with offline capabilities and modern e-commerce features.",
+      image: "/ecommerce.jpg",
+      tech: ["React", "Node.js", "MongoDB", "PWA"],
+      github: "https://github.com/Sam44556/ecommerce",
       live: "",
     },
     {
-      title: " Chat App",
-      description: " my summer internship capstone project, I worked as a Backend Developer on a real-time chat application that enables users to communicate through individual and group chats, send text messages and files, and update their profiles.", 
-      image: bunatetu, // Replace with your image path
-       performance: { performance: 90, accessibility: 90, seo: 70 },
-      tech: [
-        "**My Role:** Backend Developer",
-        "**Framework:** Next.js",
-        "**ORM:** Prisma ORM",
-        "**Database:** Supabase",
-        "**Authentication:** JWT (JSON Web Tokens) & Bcrypt",
-        "**API:** Middleware for authentication and validation",
-      ],
-      github: "https://github.com/Afomiya21-negash/chat-app", // 👈 Add GitHub link
+      title: "Chat Application",
+      description: "Real-time chat application with individual and group chats, file sharing, and profile management.",
+      image: "/bunatetu.jpg",
+      tech: ["Next.js", "Prisma", "Supabase", "JWT"],
+      github: "https://github.com/Afomiya21-negash/chat-app",
       live: "https://chat-app-b12t.vercel.app/",
     },
-     {
-  title: "Student-Course-Management-System",
-  description: "A backend API project built to manage courses, enrollments, assignments, and grading with secure role-based authentication for admins, instructors, and students.",
-  image: studentcms, // Replace with your image path
-  performance: { performance: 80, accessibility: 80 },
-  tech: [
-    "**My Role:** Backend Developer",
-    "**Framework:** Django REST Framework",
-    "**Database:** PostgreSQL",
-    "**ORM:** Django ORM",
-    "**Authentication:** JWT (JSON Web Tokens)",
-    "**Features:** Role-based access, Course & Enrollment Management, Assignment Submission & Grading",
-  ],
-  github: "https://github.com/Sam44556/Student-Course-Management-System",
-  live: "",
-}
-
+    {
+      title: "Student Course Management",
+      description: "Backend API for managing courses, enrollments, assignments, and grading with role-based authentication.",
+      image: "/download.jpg",
+      tech: ["Django", "PostgreSQL", "JWT", "REST API"],
+      github: "https://github.com/Sam44556/Student-Course-Management-System",
+      live: "",
+    },
   ];
 
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2, // Stagger animation for each card
+      },
+    },
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut",
+      },
+    },
+  };
+
   return (
-    <div className="bg-black text-white py-16 px-4 md:px-8" id="projects">
-      <div className="max-w-7xl mx-auto  mb-12">
-        <h2 className="text-3xl md:text-4xl ml-12 font-bold text-purple-500"> Projects</h2>
-      </div>
-      <p className="text-gray-400 text-base md:text-lg">
-    Some of my recent projects demonstrating my work and experience.
-  </p>
-      <div className="space-y-12">
+    <div className="bg-background text-foreground py-8 md:py-12 px-4 md:px-8" id="projects">
+      {/* Header */}
+      <motion.div
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="max-w-7xl mx-auto mb-16 text-center"
+      >
+        <h2 className="text-4xl md:text-5xl font-bold text-accent mb-4">
+          Featured Projects
+        </h2>
+        <p className="text-foreground opacity-70 text-lg max-w-2xl mx-auto">
+          Some of my recent projects demonstrating my work and experience
+        </p>
+      </motion.div>
+
+      {/* Projects Grid */}
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+      >
         {projects.map((project, idx) => (
-          <div
+          <motion.div
             key={idx}
-            className="bg-black rounded-2xl p-8 border-2 border-purple-500 shadow-purple-500/50 shadow-xl hover:shadow-purple-500/70 transition-shadow duration-300"
+            variants={cardVariants}
+            whileHover={{ y: -10, transition: { duration: 0.3 } }}
+            className="group relative bg-muted rounded-2xl overflow-hidden border border-border hover:border-accent transition-all duration-300 shadow-lg hover:shadow-accent/20"
           >
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-              {/* Image Column */}
-              <div className="flex justify-center items-center">
-                 <Image
+            {/* Project Image */}
+            <div className="relative h-64 w-full overflow-hidden">
+              <Image
                 src={project.image}
-                alt={`${project.title} screenshot`}
-                className="rounded-xl shadow-lg"
-                width={600}
-                height={400}
+                alt={project.title}
+                fill
+                className="object-cover group-hover:scale-110 transition-transform duration-500"
               />
+              {/* Overlay on hover */}
+              <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300" />
+            </div>
+
+            {/* Project Content */}
+            <div className="p-6">
+              <h3 className="text-2xl font-bold text-foreground mb-3 group-hover:text-accent transition-colors duration-300">
+                {project.title}
+              </h3>
+              
+              <p className="text-foreground opacity-70 mb-4 line-clamp-2">
+                {project.description}
+              </p>
+
+              {/* Tech Stack */}
+              <div className="flex flex-wrap gap-2 mb-4">
+                {project.tech.map((tech, i) => (
+                  <span
+                    key={i}
+                    className="px-3 py-1 text-sm bg-background border border-border rounded-full text-foreground opacity-80"
+                  >
+                    {tech}
+                  </span>
+                ))}
               </div>
 
-              {/* Description Column */}
-              <div className="flex flex-col justify-center md:order-2">
-                <h3 className="text-3xl font-bold mb-2">{project.title}</h3>
-                <p className="text-gray-400 mb-6">{project.description}</p>
-
-                {project.performance && (
-                  <div className="mb-6">
-                    <h4 className="text-lg font-semibold mb-2">Performance Metrics</h4>
-                    <div className="flex justify-between md:justify-start md:gap-8 text-center">
-                      <div>
-                        <span className="block text-2xl font-bold text-green-400">
-                          {project.performance.performance}
-                        </span>
-                        <span className="text-sm text-gray-400">Performance</span>
-                      </div>
-                      <div>
-                        <span className="block text-2xl font-bold text-green-400">
-                          {project.performance.accessibility}
-                        </span>
-                        <span className="text-sm text-gray-400">Accessibility</span>
-                      </div>
-                      <div>
-                        <span className="block text-2xl font-bold text-green-400">
-                          {project.performance.seo}
-                        </span>
-                        <span className="text-sm text-gray-400">SEO</span>
-                      </div>
-                    </div>
-                  </div>
+              {/* Links */}
+              <div className="flex gap-4">
+                {project.github && (
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 px-4 py-2 bg-background border border-accent text-accent rounded-lg hover:bg-accent hover:text-white transition-all duration-300"
+                  >
+                    <FaGithub className="w-4 h-4" />
+                    <span className="text-sm font-medium">Code</span>
+                  </a>
                 )}
-
-                {project.tech && (
-                  <div>
-                    <h4 className="text-lg font-semibold mb-2">Technical Implementation</h4>
-                    <ul className="list-disc list-inside text-gray-300 space-y-2">
-                      {project.tech.map((item, i) => (
-                        <li key={i}>{item}</li>
-                      ))}
-                    </ul>
-                  </div>
+                {project.live && (
+                  <a
+                    href={project.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 px-4 py-2 bg-accent text-white rounded-lg hover:opacity-90 transition-all duration-300"
+                  >
+                    <FaExternalLinkAlt className="w-4 h-4" />
+                    <span className="text-sm font-medium">Live Demo</span>
+                  </a>
                 )}
-                 {/* Links */}
-                <div className="flex gap-4 mt-4">
-                  {project.github && (
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="px-4 py-2 bg-gray-800 border border-purple-500 rounded-lg hover:bg-purple-600 transition"
-                    >
-                      GitHub
-                    </a>
-                  )}
-                  {project.live && (
-                    <a
-                      href={project.live}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="px-4 py-2 bg-purple-600 rounded-lg hover:bg-purple-700 transition"
-                    >
-                      Live Demo
-                    </a>
-                  )}
-                </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </div>
   );
 }

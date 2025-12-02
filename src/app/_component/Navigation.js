@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
+import ThemeToggle from './ThemeToggle';
 
 const navItems = [
   { id: 'home', label: 'Home' },
@@ -44,11 +45,15 @@ export default function Navigation() {
   };
 
   return (
-    <div className="duration-500 bg-black text-white ">
-      <nav className="flex items-center p-4 text-white">
+    <div className="bg-background text-foreground">
+      <nav className="flex items-center p-4 text-foreground">
         <div className="flex-grow flex justify-end items-center">
           {/* Hamburger menu button for small screens */}
-          <button onClick={toggleMenu} className="md:hidden text-2xl z-50 mr-8">
+          <button 
+            onClick={toggleMenu} 
+            className="md:hidden text-2xl z-50 mr-8 hover:text-accent"
+            aria-label="Toggle menu"
+          >
             ☰
           </button>
 
@@ -58,8 +63,8 @@ export default function Navigation() {
               <li key={item.id}>
                 <a
                   href={`#${item.id}`}
-                  className={`hover:underline ${
-                    activeSection === item.id ? 'text-purple-500 font-bold' : ''
+                  className={`hover:text-accent hover:underline ${
+                    activeSection === item.id ? 'text-accent font-bold' : ''
                   }`}
                 >
                   {item.label}
@@ -70,20 +75,34 @@ export default function Navigation() {
         </div>
       </nav>
 
-      {/* Mobile menu, conditionally rendered with transparency */}
-      <div className={`fixed top-0 right-0 h-full w-3/4 bg-black bg-opacity-75 shadow-lg transform transition-transform duration-500 ease-in-out ${isOpen ? 'translate-x-0' : 'translate-x-full'} z-50 flex flex-col items-start p-8 space-y-8`}>
+      {/* Mobile menu with theme-aware background */}
+      <div className={`fixed top-0 right-0 h-full w-3/4 bg-background/95 backdrop-blur-sm shadow-lg transform transition-transform duration-500 ease-in-out ${isOpen ? 'translate-x-0' : 'translate-x-full'} z-50 flex flex-col items-start p-8 space-y-8 border-l border-border`}>
+        {/* Close button */}
+        <button
+          onClick={toggleMenu}
+          className="absolute top-4 right-4 text-4xl font-bold text-foreground hover:text-accent transition-colors z-10"
+          aria-label="Close menu"
+        >
+          ✕
+        </button>
+
         {navItems.map(item => (
           <a
             key={item.id}
             href={`#${item.id}`}
             onClick={toggleMenu}
-            className={`text-2xl font-bold hover:text-purple-500 ${
-              activeSection === item.id ? 'text-purple-500' : 'text-white'
+            className={`text-2xl font-bold hover:text-accent ${
+              activeSection === item.id ? 'text-accent' : 'text-foreground'
             }`}
           >
             {item.label}
           </a>
         ))}
+        
+        {/* Theme Toggle in Mobile Menu */}
+        <div className="pt-4 border-t border-border w-full">
+          <ThemeToggle />
+        </div>
       </div>
     </div>
   );
