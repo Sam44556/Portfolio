@@ -46,12 +46,12 @@ export default function Navigation() {
 
   return (
     <div className="bg-background text-foreground">
-      <nav className="flex items-center p-4 text-foreground">
+      <nav className="flex items-center text-foreground">
         <div className="flex-grow flex justify-end items-center">
           {/* Hamburger menu button for small screens */}
           <button 
             onClick={toggleMenu} 
-            className="md:hidden text-2xl z-50 mr-8 hover:text-accent"
+            className="md:hidden text-2xl z-50 hover:text-accent"
             aria-label="Toggle menu"
           >
             ☰

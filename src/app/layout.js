@@ -20,9 +20,9 @@ const josefin = Josefin_Sans({
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" className="overflow-x-hidden">
       <body
-        className={`${josefin.className} antialiased bg-background text-foreground min-h-screen flex flex-col`}
+        className={`${josefin.className} antialiased bg-background text-foreground min-h-screen flex flex-col overflow-x-hidden`}
       >
         {/* ClientLayout wraps all client components (Header, Footer, ThemeProvider) */}
         <ClientLayout>
