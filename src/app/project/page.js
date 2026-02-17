@@ -1,4 +1,6 @@
+
 'use client';
+import React from 'react';
 
 import { motion } from 'framer-motion';
 import Image from "next/image";
@@ -79,15 +81,7 @@ live: "",
     },
   };
 
-  const [expanded, setExpanded] = React.useState(Array(projects.length).fill(false));
 
-  const handleSeeMore = (idx) => {
-    setExpanded(prev => {
-      const updated = [...prev];
-      updated[idx] = !updated[idx];
-      return updated;
-    });
-  };
 
   return (
     <div className="bg-background text-foreground py-8 md:py-12 px-4 md:px-8" id="projects">
@@ -139,28 +133,9 @@ live: "",
               <h3 className="text-2xl font-bold text-foreground mb-3 group-hover:text-accent transition-colors duration-300">
                 {project.title}
               </h3>
-              {/* Description with See More */}
-              <div className="mb-4">
-                <p className={`text-foreground opacity-70 ${expanded[idx] ? '' : 'line-clamp-2'}`}>
-                  {project.description}
-                </p>
-                {project.description.length > 80 && !expanded[idx] && (
-                  <button
-                    className="mt-1 text-accent underline text-sm hover:text-accent/80 transition-colors"
-                    onClick={() => handleSeeMore(idx)}
-                  >
-                    See more
-                  </button>
-                )}
-                {expanded[idx] && (
-                  <button
-                    className="mt-1 text-accent underline text-sm hover:text-accent/80 transition-colors"
-                    onClick={() => handleSeeMore(idx)}
-                  >
-                    See less
-                  </button>
-                )}
-              </div>
+              <p className="text-foreground opacity-70 mb-4 line-clamp-2">
+                {project.description}
+              </p>
 
               {/* Tech Stack */}
               <div className="flex flex-wrap gap-2 mb-4">

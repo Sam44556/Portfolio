@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { FaReact, FaNodeJs, FaGitAlt, FaDatabase, FaGithub, FaCode, FaShieldAlt, FaBug, FaUsers, FaCheckCircle } from 'react-icons/fa';
+import { FaReact, FaNodeJs, FaGitAlt, FaDatabase, FaGithub, FaCode, FaShieldAlt, FaBug, FaUsers, FaCheckCircle ,} from 'react-icons/fa';
 import { SiTypescript, SiJavascript, SiTailwindcss, SiMongodb, SiExpress, SiPostman, SiVercel } from 'react-icons/si';
 
 export default function Page() {
@@ -28,8 +28,6 @@ export default function Page() {
         { name: "Django", icon: <div className="w-8 h-8 flex items-center justify-center font-bold text-2xl">D</div>, color: "text-green-600" },
         { name: "MongoDB", icon: <SiMongodb className="w-8 h-8" />, color: "text-green-500" },
         { name: "Supabase", icon: <FaDatabase className="w-8 h-8" />, color: "text-green-400" },
-          { name: "Socket.io", icon: <div className="w-8 h-8 flex items-center justify-center font-bold text-2xl">S</div>, color: "text-purple-500" },
-          { name: "SI Better Auth", icon: <div className="w-8 h-8 flex items-center justify-center font-bold text-2xl">A</div>, color: "text-pink-500" },
       ]
     },
     {
