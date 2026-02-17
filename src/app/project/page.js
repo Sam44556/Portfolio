@@ -14,6 +14,22 @@ export default function Page() {
       github: "https://github.com/Sam44556/AI-Powered-Career-Path-web",
       live: "https://ai-powered-career-path-web.vercel.app/",
     },
+      {
+      title: "E-commerce Website",
+      description: "An full-stack e-commerce platform where users can browse products, add items to their cart, and securely complete purchases using Stripe.this website  delivers a modern, responsive shopping experience for  customers.",
+      image: "/ec.jpg",
+      tech: ["React", "Node.js", "MongoDB", "PWA", "Stripe" ,"NextAuth", "Schdcn"],
+      github: "https://github.com/Sam44556/E-commerce",
+      live: "https://e-commerce-shop-hazel.vercel.app/",
+    },
+    {
+title: "AgroTech ",
+description: "A full-stack platform connecting farmers, buyers, experts, and administrators. AgroTech enables crop listings, expert advice, market analytics, chat features, and weather updates, streamlining agricultural commerce and communication.",
+image: "/ag.jpg",
+tech: ["Next.js", "React", "Node.js", "TypeScript", "Prisma", "PostgreSQL", "Socket.io", "Tailwind CSS"],
+github: "https://github.com/Sam44556/AgroTech",
+live: "",
+},
      {
       title: "FreelanceHub",
       description: "A freelance marketplace where clients can hire skilled professionals and freelancers can find real projects. Users can post jobs, offer services, and connect easily to work together online.",
@@ -21,14 +37,6 @@ export default function Page() {
       tech: ["React", "Node.js", "Express.js", "Mongodb"],
       github: "https://github.com/Sam44556/freelance_web",
       live: "https://freelance-web-2.onrender.com/",
-    },
-    {
-      title: "E-commerce App",
-      description: "A high-performance Progressive Web App with offline capabilities and modern e-commerce features.",
-      image: "/ecommerce.jpg",
-      tech: ["React", "Node.js", "MongoDB", "PWA"],
-      github: "https://github.com/Sam44556/ecommerce",
-      live: "",
     },
     {
       title: "Chat Application",
@@ -69,6 +77,16 @@ export default function Page() {
         ease: "easeOut",
       },
     },
+  };
+
+  const [expanded, setExpanded] = React.useState(Array(projects.length).fill(false));
+
+  const handleSeeMore = (idx) => {
+    setExpanded(prev => {
+      const updated = [...prev];
+      updated[idx] = !updated[idx];
+      return updated;
+    });
   };
 
   return (
@@ -121,10 +139,28 @@ export default function Page() {
               <h3 className="text-2xl font-bold text-foreground mb-3 group-hover:text-accent transition-colors duration-300">
                 {project.title}
               </h3>
-              
-              <p className="text-foreground opacity-70 mb-4 line-clamp-2">
-                {project.description}
-              </p>
+              {/* Description with See More */}
+              <div className="mb-4">
+                <p className={`text-foreground opacity-70 ${expanded[idx] ? '' : 'line-clamp-2'}`}>
+                  {project.description}
+                </p>
+                {project.description.length > 80 && !expanded[idx] && (
+                  <button
+                    className="mt-1 text-accent underline text-sm hover:text-accent/80 transition-colors"
+                    onClick={() => handleSeeMore(idx)}
+                  >
+                    See more
+                  </button>
+                )}
+                {expanded[idx] && (
+                  <button
+                    className="mt-1 text-accent underline text-sm hover:text-accent/80 transition-colors"
+                    onClick={() => handleSeeMore(idx)}
+                  >
+                    See less
+                  </button>
+                )}
+              </div>
 
               {/* Tech Stack */}
               <div className="flex flex-wrap gap-2 mb-4">

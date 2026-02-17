@@ -28,6 +28,8 @@ export default function Page() {
         { name: "Django", icon: <div className="w-8 h-8 flex items-center justify-center font-bold text-2xl">D</div>, color: "text-green-600" },
         { name: "MongoDB", icon: <SiMongodb className="w-8 h-8" />, color: "text-green-500" },
         { name: "Supabase", icon: <FaDatabase className="w-8 h-8" />, color: "text-green-400" },
+          { name: "Socket.io", icon: <div className="w-8 h-8 flex items-center justify-center font-bold text-2xl">S</div>, color: "text-purple-500" },
+          { name: "SI Better Auth", icon: <div className="w-8 h-8 flex items-center justify-center font-bold text-2xl">A</div>, color: "text-pink-500" },
       ]
     },
     {
