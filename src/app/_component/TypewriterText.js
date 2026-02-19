@@ -11,8 +11,7 @@ export default function TypewriterText() {
   // Array of titles to cycle through
   const titles = [
     "a software engineer",
-    "a full stack developer",
-    "a web developer"
+    "a full stack developer"
   ];
 
   // State management
@@ -68,7 +67,7 @@ export default function TypewriterText() {
   }, [displayText, isDeleting, isPaused, currentTitleIndex]);
 
   return (
-    <span className="text-accent font-bold">
+    <span className="text-sky-600 dark:text-sky-400 font-bold">
       {displayText}
       <span className="animate-blink">|</span>
     </span>

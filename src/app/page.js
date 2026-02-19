@@ -1,4 +1,5 @@
 'use client';
+
 import Introduction from './_component/Introduction';
 import About from '@/app/About/page';
 import Projects from '@/app/project/page';
@@ -7,29 +8,20 @@ import Skills from '@/app/skills/page';
 
 export default function Home() {
   return (
-    <div className="bg-background text-foreground">
-      {/* Home section with introduction */}
-      <section id="home" className="">
-        <Introduction/>
+    <div className="bg-background text-foreground min-h-screen">
+      <section id="home" aria-label="Home">
+        <Introduction />
       </section>
-      
-      {/* Skills section */}
-      <section id="skills" className="">
+      <section id="skills" aria-label="Skills">
         <Skills />
       </section>
-    
-      {/* Projects section */}
-      <section id="projects" className="">
+      <section id="projects" aria-label="Projects">
         <Projects />
       </section>
-    
-      {/* About section */}
-      <section id="about" className="">
+      <section id="about" aria-label="About">
         <About />
       </section>
-
-      {/* Contact section */}
-      <section id="contact" className="">
+      <section id="contact" aria-label="Contact">
         <Contact />
       </section>
     </div>

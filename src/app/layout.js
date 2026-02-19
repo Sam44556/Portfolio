@@ -3,9 +3,11 @@ import ClientLayout from "./_component/ClientLayout";
 import "./globals.css";
 export const metadata = {
   title: 'Samuel Girma Portfolio',
-  description: 'Portfolio of Samuel Girma - Web Developer',
+  description: 'Portfolio of Samuel Girma - Software Engineer.',
   icons: {
-    icon: "/download.webp", // favicon path
+    // Use download.webp as the primary favicon (file exists in public/)
+    icon: '/download.webp',
+    shortcut: '/download.webp',
   },
 };
 import { Josefin_Sans } from "next/font/google";

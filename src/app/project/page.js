@@ -1,183 +1,185 @@
-
 'use client';
-import React from 'react';
 
+import React from 'react';
 import { motion } from 'framer-motion';
-import Image from "next/image";
-import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
+import Image from 'next/image';
+import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 
 export default function Page() {
   const projects = [
     {
-      title: "CareerAI",
-      description: "An AI-driven web application that recommends personalized career paths based on users' skills, interests, and goals.",
-      image: "/career.jpg",
-      tech: ["Next.js", "Supabase", "Prisma", "Gemini AI"],
-      github: "https://github.com/Sam44556/AI-Powered-Career-Path-web",
-      live: "https://ai-powered-career-path-web.vercel.app/",
-    },
-      {
-      title: "E-commerce Website",
-      description: "An full-stack e-commerce platform where users can browse products, add items to their cart, and securely complete purchases using Stripe.this website  delivers a modern, responsive shopping experience for  customers.",
-      image: "/ec.jpg",
-      tech: ["React", "Node.js", "MongoDB", "PWA", "Stripe" ,"NextAuth", "Schdcn"],
-      github: "https://github.com/Sam44556/E-commerce",
-      live: "https://e-commerce-shop-hazel.vercel.app/",
+      title: 'CareerAI',
+      description:
+        "AI-driven web app that recommends personalized career paths based on users skills and interests.",
+      image: '/career.jpg',
+      tech: ['Next.js', 'Supabase', 'Prisma', 'Gemini AI'],
+      github: 'https://github.com/Sam44556/AI-Powered-Career-Path-web',
+      live: 'https://ai-powered-career-path-web.vercel.app/',
     },
     {
-title: "AgroTech ",
-description: "A full-stack platform connecting farmers, buyers, experts, and administrators. AgroTech enables crop listings, expert advice, market analytics, chat features, and weather updates, streamlining agricultural commerce and communication.",
-image: "/ag.jpg",
-tech: ["Next.js", "React", "Node.js", "TypeScript", "Prisma", "PostgreSQL", "Socket.io", "Tailwind CSS"],
-github: "https://github.com/Sam44556/AgroTech",
-live: "",
-},
-     {
-      title: "FreelanceHub",
-      description: "A freelance marketplace where clients can hire skilled professionals and freelancers can find real projects. Users can post jobs, offer services, and connect easily to work together online.",
-      image: "/fre.jpg",
-      tech: ["React", "Node.js", "Express.js", "Mongodb"],
-      github: "https://github.com/Sam44556/freelance_web",
-      live: "https://freelance-web-2.onrender.com/",
+      title: 'E-commerce Website',
+      description:
+        'Full-stack e-commerce platform with  checkout via Stripe, and a modern responsive shopping experience.',
+      image: '/ec.jpg',
+      tech: ['React', 'Node.js', 'MongoDB', 'PWA', 'Stripe', 'NextAuth', 'shadcn'],
+      github: 'https://github.com/Sam44556/E-commerce',
+      live: 'https://e-commerce-shop-hazel.vercel.app/',
     },
     {
-      title: "Chat Application",
-      description: "Real-time chat application with individual and group chats, file sharing, and profile management.",
-      image: "/bunatetu.jpg",
-      tech: ["Next.js", "Prisma", "Supabase", "JWT"],
-      github: "https://github.com/Afomiya21-negash/chat-app",
-      live: "https://chat-app-b12t.vercel.app/",
+      title: 'AgroTech',
+      description:
+        'Full-stack platform connecting farmers, buyers, and experts with crop listings, chat, analytics, and weather.',
+      image: '/ag.jpg',
+      tech: ['Next.js', 'React', 'Node.js', 'TypeScript', 'Prisma', 'PostgreSQL', 'Socket.io', 'Tailwind'],
+      github: 'https://github.com/Sam44556/AgroTech',
+      live: '',
     },
     {
-      title: "Student Course Management",
-      description: "Backend API for managing courses, enrollments, assignments, and grading with role-based authentication.",
-      image: "/download.jpg",
-      tech: ["Django", "PostgreSQL", "JWT", "REST API"],
-      github: "https://github.com/Sam44556/Student-Course-Management-System",
-      live: "",
+      title: 'FreelanceHub',
+      description:
+        'Freelance marketplace where clients hire professionals and freelancers find remote job opportunities.',
+      image: '/fre.jpg',
+      tech: ['React', 'Node.js', 'Express.js', 'MongoDB'],
+      github: 'https://github.com/Sam44556/freelance_web',
+      live: 'https://freelance-web-2.onrender.com/',
+    },
+    {
+      title: 'Chat Application',
+      description:
+        'Real-time chat with individual and group chats, file sharing, and profile management.',
+      image: '/bunatetu.jpg',
+      tech: ['Next.js', 'Prisma', 'Supabase', 'JWT'],
+      github: 'https://github.com/Afomiya21-negash/chat-app',
+      live: 'https://chat-app-b12t.vercel.app/',
+    },
+    {
+      title: 'Student Course Management',
+      description:
+        'Backend API for courses, enrollments, assignments, and grading with role-based auth.',
+      image: '/download.jpg',
+      tech: ['Django', 'PostgreSQL', 'JWT', 'REST API'],
+      github: 'https://github.com/Sam44556/Student-Course-Management-System',
+      live: '',
     },
   ];
 
-  // Animation variants
-  const containerVariants = {
+  const container = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.2, // Stagger animation for each card
-      },
+      transition: { staggerChildren: 0.1 },
     },
   };
 
-  const cardVariants = {
-    hidden: { opacity: 0, y: 50 },
+  const item = {
+    hidden: { opacity: 0, y: 24 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut",
-      },
+      transition: { duration: 0.4 },
     },
   };
 
-
-
   return (
-    <div className="bg-background text-foreground py-8 md:py-12 px-4 md:px-8" id="projects">
-      {/* Header */}
-      <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="max-w-7xl mx-auto mb-16 text-center"
-      >
-        <h2 className="text-4xl md:text-5xl font-bold text-accent mb-4">
-          Featured Projects
-        </h2>
-        <p className="text-foreground opacity-70 text-lg max-w-2xl mx-auto">
-          Some of my recent projects demonstrating my work and experience
-        </p>
-      </motion.div>
+    <section className="bg-background text-foreground pt-12 md:pt-10
+ px-4" id="projects">
+      <div className="max-w-7xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="px-5 mb-16"
+        >
+          
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+            Featured Projects
+          </h2>
+          <p className="text-muted-foreground text-lg max-w-2xl ">
+            A selection of recent work  each showcasing  a unique problem-solving and technical approach
+          </p>
+        </motion.div>
 
-      {/* Projects Grid */}
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
-        className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-      >
-        {projects.map((project, idx) => (
-          <motion.div
-            key={idx}
-            variants={cardVariants}
-            whileHover={{ y: -10, transition: { duration: 0.3 } }}
-            className="group relative bg-muted rounded-2xl overflow-hidden border border-border hover:border-accent transition-all duration-300 shadow-lg hover:shadow-accent/20"
-          >
-            {/* Project Image */}
-            <div className="relative h-64 w-full overflow-hidden">
-              <Image
-                src={project.image}
-                alt={project.title}
-                fill
-                className="object-cover group-hover:scale-110 transition-transform duration-500"
-              />
-              {/* Overlay on hover */}
-              <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300" />
-            </div>
-
-            {/* Project Content */}
-            <div className="p-6">
-              <h3 className="text-2xl font-bold text-foreground mb-3 group-hover:text-accent transition-colors duration-300">
-                {project.title}
-              </h3>
-              <p className="text-foreground opacity-70 mb-4 line-clamp-2">
-                {project.description}
-              </p>
-
-              {/* Tech Stack */}
-              <div className="flex flex-wrap gap-2 mb-4">
-                {project.tech.map((tech, i) => (
-                  <span
-                    key={i}
-                    className="px-3 py-1 text-sm bg-background border border-border rounded-full text-foreground opacity-80"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-
-              {/* Links */}
-              <div className="flex gap-4">
-                {project.github && (
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-4 py-2 bg-background border border-accent text-accent rounded-lg hover:bg-accent hover:text-white transition-all duration-300"
-                  >
-                    <FaGithub className="w-4 h-4" />
-                    <span className="text-sm font-medium">Code</span>
-                  </a>
-                )}
-                {project.live && (
-                  <a
-                    href={project.live}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-4 py-2 bg-accent text-white rounded-lg hover:opacity-90 transition-all duration-300"
-                  >
-                    <FaExternalLinkAlt className="w-4 h-4" />
-                    <span className="text-sm font-medium">Live Demo</span>
-                  </a>
-                )}
-              </div>
-            </div>
-          </motion.div>
-        ))}
-      </motion.div>
-    </div>
+        <motion.div
+          variants={container}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-80px' }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+        >
+          {projects.map((project, idx) => (
+            <motion.div key={idx} variants={item}>
+              <Card className="group h-full flex flex-col overflow-hidden border-border hover:border-accent transition-all duration-300 hover:shadow-xl hover:shadow-accent/10">
+                <div className="relative h-52 w-full overflow-hidden bg-muted">
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent opacity-80" />
+                </div>
+                <CardHeader className="pb-2">
+                  <CardTitle className="text-xl group-hover:text-accent transition-colors">
+                    {project.title}
+                  </CardTitle>
+                  <CardDescription className="line-clamp-2">
+                    {project.description}
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="flex-1 pb-4">
+                  <div className="flex flex-wrap gap-2">
+                    {project.tech.map((t) => (
+                      <Badge key={t} variant="outline" className="border-sky-600 text-sky-600 dark:text-sky-400 ">
+                        {t}
+                      </Badge>
+                    ))}
+                  </div>
+                </CardContent>
+                <CardFooter className="gap-3 pt-0">
+                  {project.github && (
+                    <Button variant="outline" size="sm" asChild className="border-sky-600 text-sky-600 dark:text-sky-400 ">
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2"
+                      >
+                        <FaGithub className="size-4" />
+                        Code
+                      </a>
+                    </Button>
+                  )}
+                  {project.live && (
+                    <Button size="sm" asChild className="bg-sky-600 hover:bg-sky-700">
+                      <a
+                        href={project.live}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2"
+                      >
+                        <FaExternalLinkAlt className="size-4" />
+                        Live
+                      </a>
+                    </Button>
+                  )}
+                </CardFooter>
+              </Card>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
   );
 }

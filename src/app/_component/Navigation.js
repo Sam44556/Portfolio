@@ -51,7 +51,7 @@ export default function Navigation() {
           {/* Hamburger menu button for small screens */}
           <button 
             onClick={toggleMenu} 
-            className="md:hidden text-2xl z-50 hover:text-accent"
+            className="md:hidden text-2xl z-50 hover:text-sky-600 dark:hover:text-sky-400"
             aria-label="Toggle menu"
           >
             ☰
@@ -63,8 +63,8 @@ export default function Navigation() {
               <li key={item.id}>
                 <a
                   href={`#${item.id}`}
-                  className={`hover:text-accent hover:underline ${
-                    activeSection === item.id ? 'text-accent font-bold' : ''
+                  className={`hover:text-sky-600 dark:hover:text-sky-400 hover:underline ${
+                    activeSection === item.id ? 'text-sky-600 dark:text-sky-400 font-bold' : ''
                   }`}
                 >
                   {item.label}
@@ -80,7 +80,7 @@ export default function Navigation() {
         {/* Close button */}
         <button
           onClick={toggleMenu}
-          className="absolute top-4 right-4 text-4xl font-bold text-foreground hover:text-accent transition-colors z-10"
+          className="absolute top-4 right-4 text-4xl font-bold text-foreground hover:text-sky-600 dark:hover:text-sky-400 transition-colors z-10"
           aria-label="Close menu"
         >
           ✕
@@ -91,8 +91,8 @@ export default function Navigation() {
             key={item.id}
             href={`#${item.id}`}
             onClick={toggleMenu}
-            className={`text-2xl font-bold hover:text-accent ${
-              activeSection === item.id ? 'text-accent' : 'text-foreground'
+            className={`text-2xl font-bold hover:text-sky-600 dark:hover:text-sky-400 ${
+              activeSection === item.id ? 'text-sky-600 dark:text-sky-400' : 'text-foreground'
             }`}
           >
             {item.label}
