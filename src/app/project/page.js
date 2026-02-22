@@ -40,7 +40,7 @@ export default function Page() {
       description:
         'Full-stack platform connecting farmers, buyers, and experts with crop listings, chat, analytics, and weather.',
       image: '/ag.jpg',
-      tech: ['Next.js', 'Node.js', 'TypeScript', 'Prisma', 'PostgreSQL/Neon', 'Socket.io', 'Tailwind'],
+      tech: ['Next.js', 'Node.js', 'TypeScript', 'Prisma', 'PostgreSQL/Neon', 'Socket.io', 'BetterAuth', 'Tailwind'],
       github: 'https://github.com/Sam44556/AgroTech',
       live: '',
     },
