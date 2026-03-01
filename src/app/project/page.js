@@ -42,7 +42,7 @@ export default function Page() {
       image: '/ag.jpg',
       tech: ['Next.js', 'Node.js', 'TypeScript', 'Prisma', 'PostgreSQL/Neon', 'Socket.io', 'BetterAuth', 'Tailwind'],
       github: 'https://github.com/Sam44556/AgroTech',
-      live: '',
+      live: 'https://agro-tech-gules.vercel.app/',
     },
     {
       title: 'FreelanceHub',
