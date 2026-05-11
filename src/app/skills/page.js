@@ -34,7 +34,7 @@ const skillCategories = [
   },
   {
     title: 'Frameworks & Libraries',
-    skills: ['Next.js', 'React.js', 'Node.js', 'Express.js', 'Django', 'Tailwind CSS', 'Redux', 'Better Auth', 'Socket.io'],
+    skills: ['Next.js', 'React.js', 'Node.js', 'Express.js', 'Django', 'Nest.js', 'Tailwind CSS', 'Redux', 'Better Auth', 'Socket.io'],
   },
   {
     title: 'Databases',
@@ -42,7 +42,7 @@ const skillCategories = [
   },
   {
     title: 'Tools & DevOps',
-    skills: ['Git', 'GitHub', 'Postman', 'Vercel', 'Figma'],
+    skills: ['Git', 'GitHub', 'Docker', 'Postman', 'Vercel', 'Figma'],
   },
 ];
 
