@@ -17,6 +17,24 @@ import { Button } from '@/components/ui/button';
 
 export default function Page() {
   const projects = [
+     {
+      title: 'AI Finance Tracker SaaS',
+      description:
+        'SaaS platform for smart personal finance management with AI-powered insights. Track spending, create budgets, set goals, and get instant answers from your AI financial assistant. Beautiful charts, automated reports, and secure data protection',
+      image: '/fin.jpg',
+      tech: ['SaaS','Next.js','Supabase backend', 'TypeScript', 'Stripe', 'PostgreSQL', 'Socket.io', 'Tailwind'],
+      github: 'https://github.com/Sam44556/finlytic_saas',
+      live: 'https://finlytic-saas.vercel.app/',
+    },
+    {
+      title: 'AgroTech',
+      description:
+        'Full-stack platform connecting farmers, buyers, and experts with crop listings, chat, analytics, and weather.',
+      image: '/ag.jpg',
+      tech: ['Next.js', 'React', 'Node.js', 'TypeScript', 'Prisma', 'PostgreSQL', 'Socket.io', 'Tailwind'],
+      github: 'https://github.com/Sam44556/AgroTech',
+      live: 'https://agro-tech-gules.vercel.app/',
+    },
     {
       title: 'CareerAI',
       description:
@@ -35,15 +53,7 @@ export default function Page() {
       github: 'https://github.com/Sam44556/E-commerce',
       live: 'https://e-commerce-shop-hazel.vercel.app/',
     },
-    {
-      title: 'AgroTech',
-      description:
-        'Full-stack platform connecting farmers, buyers, and experts with crop listings, chat, analytics, and weather.',
-      image: '/ag.jpg',
-      tech: ['Next.js', 'React', 'Node.js', 'TypeScript', 'Prisma', 'PostgreSQL', 'Socket.io', 'Tailwind'],
-      github: 'https://github.com/Sam44556/AgroTech',
-      live: '',
-    },
+   
     {
       title: 'FreelanceHub',
       description:
