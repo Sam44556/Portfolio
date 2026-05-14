@@ -53,15 +53,7 @@ export default function Page() {
       github: 'https://github.com/Sam44556/E-commerce',
       live: 'https://e-commerce-shop-hazel.vercel.app/',
     },
-    {
-      title: 'AgroTech',
-      description:
-        'Full-stack platform connecting farmers, buyers, and experts with crop listings, chat, analytics, and weather.',
-      image: '/ag.jpg',
-      tech: ['Next.js', 'React', 'Node.js', 'TypeScript', 'Prisma', 'PostgreSQL', 'Socket.io', 'Tailwind'],
-      github: 'https://github.com/Sam44556/AgroTech',
-      live: '',
-    },
+   
     {
       title: 'FreelanceHub',
       description:
